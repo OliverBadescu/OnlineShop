@@ -1,0 +1,5 @@
+1,john@example.com,password123,John Smith,123 Main Street Anytown USA,456 Oak Avenue Othertown USA,usa,12345690
+2,maria@example.com,securepass,Maria Garcia,56 Elm Street Anothercity USA,789 Pine Road Somewhereville USA,america,6543210
+3,ahmed@example.com,mysecret,Ahmed Khan,789 Maple Lane Someplace USA,101 Cedar Avenue Anotherplace USA,us,5558999
+4,sophie@example.com,sophiepass,Sophie Johnson,101 Oak Street Elsewhere USA ,321 Elm Avenue Anothercity USA,USA,4447222
+5,luca@example.com,luca123,Luca Rossi,321 Pine Lane Somewhereelse USA,543 Cedar Road Anothercity USA,USA,6633111

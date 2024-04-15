@@ -1,0 +1,5 @@
+1,Samsung Galaxy S20,999.99,50
+2,Dell Inspiron 15,1499.99,30
+3,Apple Watch Series 6,399.99,20
+4,Cronicile din Narnia de C.S. Lewis,19.99,100
+5,Bluza Nike Dri-FIT,39.99,80
