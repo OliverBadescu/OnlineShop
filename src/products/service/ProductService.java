@@ -118,4 +118,18 @@ public class ProductService {
 
     }
 
+    public void stergereProdus(Product product){
+        this.products.remove(product);
+    }
+
+    public boolean adaugareProdus(Product product){
+        for(int i =0 ; i < products.size(); i++){
+            if(products.get(i).getName().equals(product.getName())){
+                return false;
+            }
+        }
+        this.products.add(product);
+        return true;
+    }
+
 }

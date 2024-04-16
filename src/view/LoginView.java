@@ -1,5 +1,7 @@
 package view;
 
+import admin.model.Admin;
+import admin.service.AdminService;
 import customers.model.Customer;
 import customers.service.CustomerService;
 
@@ -8,10 +10,12 @@ import java.util.Scanner;
 public class LoginView {
 
     private CustomerService customerService;
+    private AdminService adminService;
     private Scanner scanner;
 
     public LoginView(){
         this.customerService = new CustomerService();
+        this.adminService = new AdminService();
         this.scanner = new Scanner(System.in);
 
         this.play();
@@ -43,6 +47,9 @@ public class LoginView {
                     break;
                 case 3:
                     running = false;
+                    break;
+                case 4:
+                    loginAdmin();
                     break;
                 default:
                     System.out.println("Tasta incorecta");
@@ -90,6 +97,24 @@ public class LoginView {
 
         if (customer != null) {
             ClientView clientView = new ClientView(customer);
+        }else{
+            System.out.println("Date incorecte");
+        }
+
+    }
+
+    private void loginAdmin(){
+
+        System.out.println("Introduceti userul si parola");
+        System.out.println("User: ");
+        String user = scanner.nextLine();
+        System.out.println("Parola: ");
+        String parola = scanner.nextLine();
+
+        Admin admin = adminService.login(user, parola);
+
+        if(admin != null){
+            AdminView adminView = new AdminView(admin);
         }else{
             System.out.println("Date incorecte");
         }

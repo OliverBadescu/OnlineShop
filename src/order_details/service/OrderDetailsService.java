@@ -101,4 +101,8 @@ public class OrderDetailsService {
 
     }
 
+    public ArrayList<OrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
 }
