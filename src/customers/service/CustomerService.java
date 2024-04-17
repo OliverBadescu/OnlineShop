@@ -92,4 +92,8 @@ public class CustomerService {
         }
         return null;
     }
+
+    public void stergereClient(Customer customer){
+        this.customers.remove(customer);
+    }
 }

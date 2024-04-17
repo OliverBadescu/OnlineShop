@@ -77,4 +77,8 @@ public class OrderService {
         return order;
     }
 
+    public void stergeComanda(Order order){
+        this.orders.remove(order);
+    }
+
 }
