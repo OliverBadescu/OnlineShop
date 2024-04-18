@@ -132,4 +132,32 @@ public class ProductService {
         return true;
     }
 
+    public void promoCraciun(){
+        for(int i =0 ; i < products.size(); i++){
+            products.get(i).setPrice(products.get(i).getPrice() * 0.5);
+        }
+    }
+
+    public void promoPaste(){
+        for(int i =0 ; i < products.size(); i++){
+            products.get(i).setPrice(products.get(i).getPrice() * 0.3);
+        }
+    }
+
+    public void anularePromoCraciun(){
+
+        for(int i =0 ; i < products.size(); i++){
+            products.get(i).setPrice(products.get(i).getPrice() * 2);
+        }
+
+    }
+
+    public void anularePromoPaste(){
+
+        for(int i =0 ; i < products.size(); i++){
+            products.get(i).setPrice(products.get(i).getPrice() / 0.7);
+        }
+
+    }
+
 }

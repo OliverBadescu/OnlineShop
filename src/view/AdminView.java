@@ -10,6 +10,7 @@ import orders.model.Order;
 import orders.service.OrderService;
 import products.model.Product;
 import products.service.ProductService;
+import reviews.model.Review;
 import reviews.service.ReviewService;
 import utile.ProductDto;
 
@@ -54,6 +55,17 @@ public class AdminView {
         System.out.println("Apasati tasta 8 pentru a edita datele unui client");
         System.out.println("Apasati tasta 9 pentru a afisa comenziile");
         System.out.println("Apasati tasta 10 pentru a sterge o comanda");
+        System.out.println("Apasati tasta 11 pentru a afisa review-urile unui produs");
+        System.out.println("Apasati tasta 12 pentru a sterge un review");
+        System.out.println("Apasati tasta 13 pentru a afisa cel mai vandut produs");
+        System.out.println("Apasati tasta 14 pentru a introduce promotia de craciun");
+        System.out.println("Apasati tasta 15 pentru a introduce promotia de paste");
+        System.out.println("Apasati tasta 16 pentru a anula promotia de craciun");
+        System.out.println("Apasati tasta 17 pentru a anula promotia de paste");
+        System.out.println("Apasati tasta 18 pentru a adauga un admin");
+
+        System.out.println("\n");
+        System.out.println("Apasati tasta 20 pentru a iesi din cont");
 
     }
     private void play(){
@@ -95,6 +107,35 @@ public class AdminView {
                     break;
                 case 10:
                     stergeComanda();
+                    break;
+                case 11:
+                    afisareReviewuri();
+                    break;
+                case 12:
+                    stergeReview();
+                    break;
+                case 13:
+                    celMaiVandutProdus();
+                    break;
+                case 14:
+                    promoCraciun();
+                    break;
+                case 15:
+                    promoPaste();
+                    break;
+                case 16:
+                    productService.anularePromoCraciun();
+                    System.out.println("Promotia a fost anulata!");
+                    break;
+                case 17:
+                    productService.anularePromoPaste();
+                    System.out.println("Promotia a fost anulata!");
+                    break;
+                case 18:
+                    adaugareAdmin();
+                    break;
+                case 20:
+                    running = false;
                     break;
                 default:
                     System.out.println("Tasta incorecta");
@@ -270,5 +311,104 @@ public class AdminView {
         }else{
             System.out.println("Comanda nu a fost gasita");
         }
+    }
+
+    private void afisareReviewuri(){
+
+        System.out.println("Introduceti id-ul produsului la care doriti sa vizualizati reviewurile: ");
+        System.out.println("Id: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        Product product = productService.findProductById(id);
+
+
+        if(product!=null){
+            ArrayList<Review> reviews = reviewService.getReviewsProduct(product.getId());
+            int nrRev= reviewService.getNrReviews(reviews);
+            System.out.println("Ratingul total este " + reviewService.calculareRating(reviews) + " si are " + nrRev + " review-uri");
+            System.out.println("\n");
+            for(int i =0 ; i < reviews.size(); i++){
+                System.out.println(reviews.get(i).descriere());
+            }
+        }else{
+            System.out.println("Produsul nu a fost gasit");
+        }
+
+    }
+
+    private void stergeReview(){
+
+        System.out.println("Introduceti titlul review-ului: ");
+        String title = scanner.nextLine();
+
+        ArrayList<Review> reviews = reviewService.getReviewsByTitle(title);
+
+        if(!reviews.isEmpty()){
+            if(reviews.size()==1){
+                reviewService.stergeReview(reviews.get(0));
+                System.out.println("Reviewul a fost sters");
+            }else{
+                for(int i =0 ; i < reviews.size(); i++){
+                    System.out.println(reviews.get(i).descriere() + reviews.get(i).getId());
+                }
+
+                System.out.println("Au fost gasite mai multe review-uri cu acest titlu, introduceti id-ul review-ului: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                Review review = reviewService.findReviewById(id);
+                if(review!=null) {
+                    reviewService.stergeReview(review);
+                    System.out.println("Reviewul a fost sters!");
+                }else{
+                    System.out.println("Reviewul nu a fost gasit");
+                }
+            }
+        }
+
+    }
+
+    private void celMaiVandutProdus(){
+
+        Product product = productService.findProductById(orderDetailsService.celMaiVandutProdus());
+
+        System.out.println(product.descriere());
+
+
+    }
+
+    private void promoCraciun(){
+
+        System.out.println("Reducerea de craciun este de 50% la toate produsele, doriti sa o aplicati?(y/n)");
+        String choice = scanner.nextLine();
+
+        if(choice.equals("y")){
+            productService.promoCraciun();
+            System.out.println("Promotia a fost activata!");
+        }
+    }
+
+    private void promoPaste(){
+
+        System.out.println("Reducerea de paste este de 30% la toate produsele, doriti sa o aplicati?(y/n)");
+        String choice = scanner.nextLine();
+        if(choice.equals("y")){
+            productService.promoPaste();
+            System.out.println("Promotia a fost activata!");
+        }
+    }
+
+    private void adaugareAdmin(){
+
+        System.out.println("Introduceti user-ul: ");
+        String username = scanner.nextLine();
+        System.out.println("Introduceti password: ");
+        String password = scanner.nextLine();
+
+        Admin admin = new Admin(adminService.generateId(), username, password);
+
+        if(adminService.adaugareAdmin(admin)){
+            System.out.println("Adminul a fost adaugat!");
+        }else{
+            System.out.println("Usernamul este deja folosit");
+        }
+
     }
 }

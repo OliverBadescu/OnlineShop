@@ -45,6 +45,35 @@ public class AdminService {
         return null;
     }
 
+    public int generateId(){
 
+        int id=(int) Math.round(Math.random()*1000+1);
+
+        while (findAdminById(id)!=null){
+            id=(int) Math.round(Math.random()*1000+1);
+        }
+
+        return id;
+
+    }
+
+    public Admin findAdminById(int id){
+        for (int i =0; i < admins.size();i++){
+            if(admins.get(i).getId() == id){
+                return admins.get(i);
+            }
+        }
+        return null;
+    }
+
+    public boolean adaugareAdmin(Admin admin){
+        for (int i =0; i < admins.size();i++){
+            if(admins.get(i).getUser().equals(admin.getUser())){
+                return false;
+            }
+        }
+        admins.add(admin);
+        return true;
+    }
 
 }

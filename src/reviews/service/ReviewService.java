@@ -116,4 +116,19 @@ public class ReviewService {
         }
         return ct;
     }
+
+    public ArrayList<Review> getReviewsByTitle(String title){
+
+        ArrayList<Review> reviews = new ArrayList<>();
+        for(int i =0; i < this.reviews.size(); i++){
+            if(this.reviews.get(i).getTitle().equals(title)){
+                reviews.add(this.reviews.get(i));
+            }
+        }
+        return reviews;
+    }
+
+    public void stergeReview(Review review){
+        this.reviews.remove(review);
+    }
 }
