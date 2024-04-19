@@ -65,7 +65,7 @@ public class AdminView {
         System.out.println("Apasati tasta 18 pentru a adauga un admin");
 
         System.out.println("\n");
-        System.out.println("Apasati tasta 20 pentru a iesi din cont");
+        System.out.println("Apasati tasta 19 pentru a iesi din cont");
 
     }
     private void play(){
@@ -134,7 +134,7 @@ public class AdminView {
                 case 18:
                     adaugareAdmin();
                     break;
-                case 20:
+                case 19:
                     running = false;
                     break;
                 default:
