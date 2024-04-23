@@ -64,8 +64,11 @@ public class AdminView {
         System.out.println("Apasati tasta 17 pentru a anula promotia de paste");
         System.out.println("Apasati tasta 18 pentru a adauga un admin");
 
+        //clientul cel mai fidel
+        System.out.println("Apasati tasta 19 pentru a afisa clientul cel mai fidel");
+
         System.out.println("\n");
-        System.out.println("Apasati tasta 19 pentru a iesi din cont");
+        System.out.println("Apasati tasta 20 pentru a iesi din cont");
 
     }
     private void play(){
@@ -135,6 +138,9 @@ public class AdminView {
                     adaugareAdmin();
                     break;
                 case 19:
+                    customerLoial();
+                    break;
+                case 20:
                     running = false;
                     break;
                 default:
@@ -409,6 +415,15 @@ public class AdminView {
         }else{
             System.out.println("Usernamul este deja folosit");
         }
+
+    }
+
+    private void customerLoial(){
+
+        Customer customer = customerService.findCustomerById(orderService.clientCuCeleMaiMulteComenzi());
+
+        System.out.println("Clientul cu cele mai multe comenzi este: ");
+        System.out.println(customer.descriere());
 
     }
 }

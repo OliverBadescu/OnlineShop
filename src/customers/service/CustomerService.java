@@ -17,6 +17,11 @@ public class CustomerService {
         this.loadData();
     }
 
+    public CustomerService(ArrayList<Customer> customers) {
+        this.customers = customers;
+    }
+
+
     private void loadData(){
 
         try{

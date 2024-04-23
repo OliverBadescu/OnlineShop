@@ -15,6 +15,9 @@ public class AdminService {
         admins = new ArrayList<>();
         this.loadData();
     }
+    public AdminService(ArrayList<Admin> admins) {
+        this.admins = admins;
+    }
 
     private void loadData(){
 

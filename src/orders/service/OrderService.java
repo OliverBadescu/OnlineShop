@@ -81,4 +81,23 @@ public class OrderService {
         this.orders.remove(order);
     }
 
+    public int clientCuCeleMaiMulteComenzi(){
+
+        int[] frec = new int[100];
+
+        for(int i = 0; i < orders.size();i++){
+            frec[orders.get(i).getCustomerId()]++;
+        }
+        int max = 0;
+        int customer = 0;
+
+        for(int i = 0; i < frec.length; i++){
+            if(frec[i] > max){
+                max = frec[i];
+                customer = i;
+            }
+        }
+        return customer;
+    }
+
 }
