@@ -16,6 +16,9 @@ public class OrderDetailsService {
 
         this.loadData();
     }
+    public OrderDetailsService(ArrayList<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
 
     private void loadData() {
 

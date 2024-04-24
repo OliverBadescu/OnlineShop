@@ -63,8 +63,19 @@ public class AdminServiceTests {
         assertEquals("test2", adminService.findAdminById(2).getUser());
         assertEquals(null, adminService.findAdminById(3));
 
-    }
 
+    }
+    @Test
+
+    public void GivenAvailableDataCheckIfGetsLoaded(){
+
+        AdminService adminService1 = new AdminService();
+
+        Admin admin = adminService1.findAdminById(1);
+
+        assertEquals("admin", admin.getUser());
+
+    }
 
 
 }

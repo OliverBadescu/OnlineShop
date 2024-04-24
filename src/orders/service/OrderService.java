@@ -15,6 +15,10 @@ public class OrderService {
         this.loadData();
     }
 
+    public OrderService(ArrayList<Order> orders){
+        this.orders = orders;
+    }
+
     private void loadData() {
         try{
             String filePath="C:\\mycode\\java\\incapsularea\\OnlineShop\\src\\orders\\data\\orders.txt";

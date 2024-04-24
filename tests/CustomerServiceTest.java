@@ -113,4 +113,16 @@ public class CustomerServiceTest {
 
     }
 
+    @Test
+
+    public void GivenAvailableDataCheckIfGetsLoaded(){
+
+        CustomerService customerService1 = new CustomerService();
+
+        Customer customer = customerService1.findCustomerById(1);
+
+        assertEquals(1, customer.getId());
+
+    }
+
 }
