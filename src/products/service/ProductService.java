@@ -16,6 +16,10 @@ public class ProductService {
         this.loadData();
     }
 
+    public ProductService(ArrayList<Product> products) {
+        this.products = products;
+    }
+
     private void loadData(){
 
         try{
