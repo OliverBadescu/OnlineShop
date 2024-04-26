@@ -16,6 +16,10 @@ public class ReviewService {
         this.loadData();
     }
 
+    public ReviewService(ArrayList<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     private void loadData(){
 
         try{

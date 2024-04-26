@@ -77,5 +77,18 @@ public class AdminServiceTests {
 
     }
 
+    @Test
+
+    public void generare(){
+
+        ArrayList<Admin> admins = new ArrayList<>();
+        Admin admin = new Admin(1, "test", "123");
+        admins.add(admin);
+        adminService= new AdminService(admins);
+
+        int id = adminService.generateId();
+
+    }
+
 
 }
